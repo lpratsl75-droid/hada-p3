@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CADCategory.cs" />
     <Compile Include="CADProduct.cs" />
+    <Compile Include="ENCategory.cs" />
+    <Compile Include="ENProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

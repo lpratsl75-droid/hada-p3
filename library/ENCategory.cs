@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    internal class ENCategory
+    public class ENCategory
     {
         // Definimos los atributos de la clase ENCategory
         private int _id;

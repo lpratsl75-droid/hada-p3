@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    internal class ENProduct
+    public class ENProduct
     {
         // Declaramos los atributos privados de la clase ENProduct
         private string _code;

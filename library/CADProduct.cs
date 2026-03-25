@@ -26,9 +26,10 @@ namespace library
 
         public bool Create(ENProduct en)
         {
+            SqlConnection conexion = new SqlConnection(conex);
+
             try
             {
-                SqlConnection conexion = new SqlConnection(conex);
                 conexion.Open();
 
                 SqlCommand com = new SqlCommand("INSERT INTO Products(name, code, amount, price, category, creationDate, id) VALUES(@name, @code, @amount, @price, @category, @creationDate, @id)" , conexion);
@@ -39,7 +40,7 @@ namespace library
                 com.Parameters.AddWithValue("@price", en.price);
                 com.Parameters.AddWithValue("@category", en.category);
                 com.Parameters.AddWithValue("@creationDate", en.creationDate);
-                com.Parameters.AddWithValue("@id", en.id);
+                //com.Parameters.AddWithValue("@id", en.id);
 
                 return com.ExecuteNonQuery() > 0;
             }
@@ -69,7 +70,7 @@ namespace library
                 com.Parameters.AddWithValue("@price", en.price);
                 com.Parameters.AddWithValue("@category", en.category);
                 com.Parameters.AddWithValue("@creationDate", en.creationDate);
-                com.Parameters.AddWithValue("@id", en.id);
+                //com.Parameters.AddWithValue("@id", en.id);
 
 
 
@@ -127,11 +128,12 @@ namespace library
                 if (dat.Read())
                 {
                     en.name = dat["name"].ToString();
-                    en.code = int.Parse(dat["code"].ToString());
-                    en.amount = dat["amount"].ToString();
+                    en.code = dat["code"].ToString();
+                    en.amount = int.Parse(dat["amount"].ToString());
                     en.price = float.Parse(dat["price"].ToString());
-                    en.category = dat["category"].ToString();
+                    en.category = int.Parse(dat["category"].ToString());
                     en.creationDate = DateTime.Parse(dat["creationDate"].ToString());
+                    //en.id = int.Parse(dat["id"].ToString());
 
                     dat.Close();
 
@@ -164,12 +166,12 @@ namespace library
                 if (dat.Read())
                 {
                     en.name = dat["name"].ToString();
-                    en.code = int.Parse(dat["code"].ToString());
-                    en.amount = dat["amount"].ToString();
+                    en.code = dat["code"].ToString();
+                    en.amount = int.Parse(dat["amount"].ToString());
                     en.price = float.Parse(dat["price"].ToString());
-                    en.category = dat["category"].ToString();
+                    en.category = int.Parse(dat["category"].ToString());
                     en.creationDate = DateTime.Parse(dat["creationDate"].ToString());
-                    en.id = int.Parse(dat["id"].ToString());
+                    //en.id = int.Parse(dat["id"].ToString());
 
                     dat.Close();
 
@@ -204,12 +206,12 @@ namespace library
                 if (dat.Read())
                 {
                     en.name = dat["name"].ToString();
-                    en.code = int.Parse(dat["code"].ToString());
-                    en.amount = dat["amount"].ToString();
+                    en.code = dat["code"].ToString();
+                    en.amount = int.Parse(dat["amount"].ToString());
                     en.price = float.Parse(dat["price"].ToString());
-                    en.category = dat["category"].ToString();
+                    en.category = int.Parse(dat["category"].ToString());
                     en.creationDate = DateTime.Parse(dat["creationDate"].ToString());
-                    en.id = int.Parse(dat["id"].ToString());
+                    //en.id = int.Parse(dat["id"].ToString());
 
                     dat.Close();
 
@@ -243,12 +245,12 @@ namespace library
                 if (dat.Read())
                 {
                     en.name = dat["name"].ToString();
-                    en.code = int.Parse(dat["code"].ToString());
-                    en.amount = dat["amount"].ToString();
+                    en.code = dat["code"].ToString();
+                    en.amount = int.Parse(dat["amount"].ToString());
                     en.price = float.Parse(dat["price"].ToString());
-                    en.category = dat["category"].ToString();
+                    en.category = int.Parse(dat["category"].ToString());
                     en.creationDate = DateTime.Parse(dat["creationDate"].ToString());
-                    en.id = int.Parse(dat["id"].ToString());
+                    //en.id = int.Parse(dat["id"].ToString());
 
                     dat.Close();
 
