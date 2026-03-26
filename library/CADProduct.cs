@@ -32,7 +32,7 @@ namespace library
             {
                 conexion.Open();
 
-                SqlCommand com = new SqlCommand("INSERT INTO Products(name, code, amount, price, category, creationDate, id) VALUES(@name, @code, @amount, @price, @category, @creationDate, @id)" , conexion);
+                SqlCommand com = new SqlCommand("INSERT INTO Products(name, code, amount, price, category, creationDate, code) VALUES(@name, @code, @amount, @price, @category, @creationDate)" , conexion);
 
                 com.Parameters.AddWithValue("@name", en.name);
                 com.Parameters.AddWithValue("@code", en.code);
@@ -40,7 +40,6 @@ namespace library
                 com.Parameters.AddWithValue("@price", en.price);
                 com.Parameters.AddWithValue("@category", en.category);
                 com.Parameters.AddWithValue("@creationDate", en.creationDate);
-                //com.Parameters.AddWithValue("@id", en.id);
 
                 return com.ExecuteNonQuery() > 0;
             }
@@ -62,7 +61,7 @@ namespace library
             {
                 conexion.Open();
 
-                SqlCommand com = new SqlCommand("UPDATE Products SET name=@name, code=@code, amount=@amount, price=@price, category=@category, creationDate=@creationDate WHERE id=@id" , conexion);
+                SqlCommand com = new SqlCommand("UPDATE Products SET name=@name, code=@code, amount=@amount, price=@price, category=@category, creationDate=@creationDate WHERE code=@code" , conexion);
 
                 com.Parameters.AddWithValue("@name", en.name);
                 com.Parameters.AddWithValue("@code", en.code);
@@ -70,7 +69,6 @@ namespace library
                 com.Parameters.AddWithValue("@price", en.price);
                 com.Parameters.AddWithValue("@category", en.category);
                 com.Parameters.AddWithValue("@creationDate", en.creationDate);
-                //com.Parameters.AddWithValue("@id", en.id);
 
 
 
@@ -94,9 +92,9 @@ namespace library
             {
                 conexion.Open();
 
-                SqlCommand com = new SqlCommand("DELETE FROM Products WHERE id=@id", conexion);
+                SqlCommand com = new SqlCommand("DELETE FROM Products WHERE code=@code", conexion);
 
-                com.Parameters.AddWithValue("@id", en.id);
+                com.Parameters.AddWithValue("@code", en.code);
 
 
 
@@ -119,9 +117,9 @@ namespace library
             {
                 conexion.Open();
 
-                SqlCommand com = new SqlCommand("Select * FROM Products WHERE id=@id", conexion);
+                SqlCommand com = new SqlCommand("Select * FROM Products WHERE code@code", conexion);
 
-                com.Parameters.AddWithValue("@id", en.id);
+                com.Parameters.AddWithValue("@code", en.code);
 
                 SqlDataReader dat = com.ExecuteReader();
 
@@ -133,7 +131,6 @@ namespace library
                     en.price = float.Parse(dat["price"].ToString());
                     en.category = int.Parse(dat["category"].ToString());
                     en.creationDate = DateTime.Parse(dat["creationDate"].ToString());
-                    //en.id = int.Parse(dat["id"].ToString());
 
                     dat.Close();
 
@@ -171,7 +168,6 @@ namespace library
                     en.price = float.Parse(dat["price"].ToString());
                     en.category = int.Parse(dat["category"].ToString());
                     en.creationDate = DateTime.Parse(dat["creationDate"].ToString());
-                    //en.id = int.Parse(dat["id"].ToString());
 
                     dat.Close();
 
@@ -198,8 +194,8 @@ namespace library
             {
                 conexion.Open();
 
-                SqlCommand com = new SqlCommand("Select * FROM Products WHERE id>@id ORDER BY id ASC", conexion);
-                com.Parameters.AddWithValue("@id", en.id);
+                SqlCommand com = new SqlCommand("Select * FROM Products WHERE code>@code ORDER BY code ASC", conexion);
+                com.Parameters.AddWithValue("@code", en.code);
 
                 SqlDataReader dat = com.ExecuteReader();
 
@@ -211,7 +207,7 @@ namespace library
                     en.price = float.Parse(dat["price"].ToString());
                     en.category = int.Parse(dat["category"].ToString());
                     en.creationDate = DateTime.Parse(dat["creationDate"].ToString());
-                    //en.id = int.Parse(dat["id"].ToString());
+                    //en.code = int.Parse(dat["code"].ToString());
 
                     dat.Close();
 
@@ -237,8 +233,8 @@ namespace library
             {
                 conexion.Open();
 
-                SqlCommand com = new SqlCommand("Select * FROM Products WHERE id<@id ORDER BY id DESC", conexion);
-                com.Parameters.AddWithValue("@id", en.id);
+                SqlCommand com = new SqlCommand("Select * FROM Products WHERE code<@code ORDER BY code DESC", conexion);
+                com.Parameters.AddWithValue("@code", en.code);
 
                 SqlDataReader dat = com.ExecuteReader();
 
@@ -250,7 +246,7 @@ namespace library
                     en.price = float.Parse(dat["price"].ToString());
                     en.category = int.Parse(dat["category"].ToString());
                     en.creationDate = DateTime.Parse(dat["creationDate"].ToString());
-                    //en.id = int.Parse(dat["id"].ToString());
+                    //en.code = int.Parse(dat["code"].ToString());
 
                     dat.Close();
 
